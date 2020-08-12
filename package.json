@@ -23,7 +23,9 @@
   "homepage": "https://github.com/szy0syz/react-graphQL-chat-app#readme",
   "dependencies": {
     "apollo-server": "^2.16.1",
-    "graphql": "^15.3.0"
+    "graphql": "^15.3.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
