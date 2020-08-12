@@ -55,6 +55,7 @@ module.exports = db;
 - `sequelize model:generate --name User --attributes username:string,email:string`
   - 命令行生成 model
 - `sequelize db:migrate`
+- `sequelize db:migrate:undo`
 
 ```js
 "use strict";
