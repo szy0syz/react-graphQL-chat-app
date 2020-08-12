@@ -19,8 +19,8 @@ const db = {};
 
 let sequelize;
 
-if (config.use_env.variable) {
-  sequelize = new Sequelize(process[config.use_env.variable], config);
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
@@ -54,6 +54,7 @@ module.exports = db;
   - 同时生成 `config` `migrations` `seeders` 三个文件夹
 - `sequelize model:generate --name User --attributes username:string,email:string`
   - 命令行生成 model
+- `sequelize db:migrate`
 
 ```js
 "use strict";
