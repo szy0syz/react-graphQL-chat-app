@@ -1,0 +1,31 @@
+{
+  "name": "react-graphql-chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szy0syz/react-graphQL-chat-app.git"
+  },
+  "keywords": [
+    "react.js",
+    "GraphQL"
+  ],
+  "author": "Jerry Shi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/szy0syz/react-graphQL-chat-app/issues"
+  },
+  "homepage": "https://github.com/szy0syz/react-graphQL-chat-app#readme",
+  "dependencies": {
+    "apollo-server": "^2.16.1",
+    "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
