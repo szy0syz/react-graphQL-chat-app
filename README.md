@@ -7,34 +7,33 @@
 > 这段代码略微有点 🐂
 
 ```js
-"user strict";
-
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.json")[env];
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+
 const db = {};
 
 let sequelize;
-
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process[config.use_env_variable], config);
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-fs.readdirSync(__dirname)
-  .filter((file) => {
-    return file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js";
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
-  .forEach((file) => {
+  .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
@@ -53,9 +52,10 @@ module.exports = db;
 - `sequelize init`
   - 同时生成 `config` `migrations` `seeders` 三个文件夹
 - `sequelize model:generate --name User --attributes username:string,email:string`
-  - 命令行生成 model
+  - 命令行生成 `model` 基础模板，如果有更多字段手动编辑 `migrations` 和 `models`
 - `sequelize db:migrate`
 - `sequelize db:migrate:undo`
+  - 谨慎操作，可能会删数据
 
 ```js
 "use strict";
