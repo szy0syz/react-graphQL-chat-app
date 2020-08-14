@@ -89,3 +89,11 @@ module.exports = {
   },
 };
 ```
+
+- `sequelize` 的新玩具 `Op`，有点 `MongoDB` 的味道了
+
+```js
+const users = await User.findAll({
+  where: { username: { [Op.ne]: user.username } },
+});
+```
