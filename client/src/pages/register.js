@@ -1,5 +1,26 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
+import { gql, useMutation } from "@apollo/client";
+
+const REGISTER_USER = gql`
+  mutation register(
+    $email: String!
+    $username: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    register(
+      email: $email
+      username: $username
+      password: $password
+      confirmPassword: $confirmPassword
+    ) {
+      email
+      username
+      createdAt
+    }
+  }
+`;
 
 export default () => {
   const [variables, setVariables] = useState({
@@ -8,10 +29,22 @@ export default () => {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
+    update(_, res) {
+      console.log(res);
+    },
+    onError(err) {
+      console.log(err);
+      setErrors(err.graphQLErrors[0].extensions.errors)
+    }
+  });
 
   function submitRegisterForm(e) {
     e.preventDefault();
-    console.log(variables);
+
+    registerUser(variables);
   }
 
   return (

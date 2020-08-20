@@ -107,7 +107,8 @@ module.exports = {
         } else if (err.name === "SequelizeValidationError") {
           err.errors.forEach((e) => (errors[e.path] = e.message));
         }
-
+        console.log(errors);
+        console.log(err);
         throw new UserInputError("Bad input", { errors: err });
       }
     },
