@@ -49,6 +49,7 @@ module.exports = db;
 
 > 又变了
 
+- `yarn add -D sequelize-cli`
 - `sequelize init`
   - 同时生成 `config` `migrations` `seeders` 三个文件夹
 - `sequelize model:generate --name User --attributes username:string,email:string`
